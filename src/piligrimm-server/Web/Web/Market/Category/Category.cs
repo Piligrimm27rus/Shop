@@ -4,15 +4,14 @@ using Service.Market;
 namespace Web.Market
 {
     [Controller]
-    [Route("[controller]")]
+    [Route("Market/[controller]")]
     public class Category : ControllerBase
     {
-        private readonly ILogger<Category> _logger;
         private readonly IServiceCategory serviceCategory;
 
-        public Category(ILogger<Category> logger)
+        public Category(IServiceCategory _serviceCategory)
         {
-            _logger = logger;
+            serviceCategory = _serviceCategory;
         }
 
         [HttpGet(Name = "GetAll")]
