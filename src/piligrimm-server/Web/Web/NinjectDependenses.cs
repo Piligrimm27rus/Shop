@@ -1,17 +1,15 @@
-using ProductOrder.Controllers;
-
-public interface IoContainer
-{
-    void Load(IServiceCollection services);
-}
+using Common.IoC;
+using Service;
+using Application;
 
 public static class NinjectDependenses
 {
-	public static void LoadDependenses(IServiceCollection services)
+    public static void LoadDependenses(IServiceCollection services)
     {
         var modules = new IoContainer[]
         {
-            new ControllersDependerServices()
+            new ServiceDepender(),
+            new ApplicationDepender(),
         };
 
         foreach (var ioc in modules)

@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="../../Models/Models/Models.csproj"/>
+    <ProjectReference Include="../../Common/Common/Common.csproj"/>
   </ItemGroup>
 
 </Project>

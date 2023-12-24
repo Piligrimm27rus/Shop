@@ -1,6 +1,8 @@
+using Models.Market;
+
 namespace Service.Market
 {
-    interface IServiceCategory
+    public interface IServiceCategory
     {
         public IEnumerable<Category> GetAll();
     }

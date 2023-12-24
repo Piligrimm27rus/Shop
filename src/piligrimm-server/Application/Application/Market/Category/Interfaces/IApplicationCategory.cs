@@ -1,4 +1,4 @@
-
+using Models.Market;
 
 namespace Application.Market
 {

@@ -8,7 +8,7 @@ namespace Web.Market
     public class Category : ControllerBase
     {
         private readonly ILogger<Category> _logger;
-        private readonly IServiceCategory _category;
+        private readonly IServiceCategory serviceCategory;
 
         public Category(ILogger<Category> logger)
         {
@@ -16,9 +16,9 @@ namespace Web.Market
         }
 
         [HttpGet(Name = "GetAll")]
-        public IEnumerable<Category> GetAll()
+        public IEnumerable<Models.Market.Category> GetAll()
         {
-            return _category.GetAll();
+            return serviceCategory.GetAll();
         }
     }
 }

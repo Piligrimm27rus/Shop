@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Common.IoC;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,14 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+//setup Ninject
+NinjectDependenses.LoadDependenses(builder.Services);
+
+// //Database
+// string connection = builder.Configuration.GetConnectionString("DataAccessPostgreSqlProvider");
+// builder.Services.AddDbContext<InfrastuctureContext>(options => options.UseNpgsql(connection));
+// builder.Services.AddDbContext<ApplicationContext>(options => options.UseNpgsql(connection));
 
 var app = builder.Build();
 

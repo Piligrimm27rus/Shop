@@ -1,11 +1,9 @@
-﻿using System;
-
-namespace APIModels.Category
+﻿namespace Models.Market
 {
     public class Category
     {
         public Guid Uid { get; set; }
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         public DateTime Date { get; set; }
 
