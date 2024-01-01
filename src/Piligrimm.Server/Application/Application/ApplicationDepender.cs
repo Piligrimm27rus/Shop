@@ -1,15 +1,14 @@
 using Microsoft.Extensions.DependencyInjection;
 using Common.IoC;
-using Service.Market;
 using Application.Market;
 
-namespace Service
+namespace Application
 {
-    public class ServiceDepender : IoContainer
+    public class ApplicationDepender : IoContainer
     {
         public void Load(IServiceCollection services)
         {
-            services.AddTransient<IServiceCategory, ServiceCategory>();
+            services.AddTransient<ICategoryApplication, CategoryApplication>();
         }
     }
 }

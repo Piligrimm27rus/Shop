@@ -2,7 +2,7 @@ using Models.Market;
 
 namespace Service.Market
 {
-    public interface IServiceCategory
+    public interface ICategoryService
     {
         public IEnumerable<Category> GetAll();
     }

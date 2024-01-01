@@ -2,7 +2,7 @@ using Models.Market;
 
 namespace Application.Market
 {
-    public interface IApplicationCategory
+    public interface ICategoryApplication
     {
         public IEnumerable<Category> GetAll();
     }

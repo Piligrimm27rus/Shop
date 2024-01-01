@@ -3,19 +3,12 @@ using Models.Market;
 
 namespace Application.Market
 {
-    public class ApplicationCategory : IApplicationCategory
+    public class CategoryApplication : ICategoryApplication
     {
-        // private readonly IApplicationCategory applicationCategory;
-        
         private static readonly string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
-
-        // public ApplicationCategory(IApplicationCategory _applicationCategory)
-        // {
-        //     applicationCategory = _applicationCategory;
-        // }
 
         public IEnumerable<Category> GetAll()
         {

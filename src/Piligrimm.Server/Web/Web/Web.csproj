@@ -8,10 +8,6 @@
 
 	<ItemGroup>
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
-		<!-- <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="8.0.0" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="8.0.0" />
-		<PackageReference Include="System.Net.Http.Json" Version="8.0.0" /> -->
 	</ItemGroup>
 
   <ItemGroup>
