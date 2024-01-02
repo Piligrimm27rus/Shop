@@ -1,3 +1,3 @@
 # TODO: Сделать флаг
 
-dotnet run --project .\src\Piligrimm.Server\Web\Web
+dotnet run --project .\src\Piligrimm.Server\Web
