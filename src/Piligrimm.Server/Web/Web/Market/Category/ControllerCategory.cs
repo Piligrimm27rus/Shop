@@ -1,10 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Service.Market;
+using Models.Market;
 
 namespace Web.Market
 {
     [Controller]
-    [Route("market/category")]
+    [Route("api/market/category")]
     public class ControllerCategory : ControllerBase
     {
         private readonly ICategoryService categoryService;
@@ -15,7 +16,7 @@ namespace Web.Market
         }
 
         [HttpGet(Name = "GetAll")]
-        public IEnumerable<Models.Market.Category> GetAll()
+        public IEnumerable<Category> GetAll()
         {
             return categoryService.GetAll();
         }

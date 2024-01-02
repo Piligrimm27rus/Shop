@@ -1,20 +1,25 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Common.IoC;
+using Ninject;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//setup Ninject
-NinjectDependenses.LoadDependenses(builder.Services);
-
+// //setup Ninject
+// var kernel = new StandardKernel();
+// // load modules
+// kernel.Load(Assembly.GetExecutingAssembly());
+// var registrations = NinjectRegistrations.LoadDependenses();
+// DependencyResolver.SetResolver(registrations);
+var kernel = new StandardKernel(); 
+kernel.Load(Assembly.GetExecutingAssembly());
 // //Database
 // string connection = builder.Configuration.GetConnectionString("DataAccessPostgreSqlProvider");
 // builder.Services.AddDbContext<InfrastuctureContext>(options => options.UseNpgsql(connection));

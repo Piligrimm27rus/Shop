@@ -4,6 +4,6 @@ namespace Service.Market
 {
     public interface ICategoryService
     {
-        public IEnumerable<Category> GetAll();
+        IEnumerable<Category> GetAll();
     }
 }
