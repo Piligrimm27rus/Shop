@@ -19,8 +19,7 @@ jobs:
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
 
-    - name: 'Resolve Project Dependencies Using Dotnet'
+    - name: 'Build .net project'
       run:
-        dotnet build --configuration Release --output ./output
+        dotnet build ../../src/Piligrimm.Server
         popd
-
