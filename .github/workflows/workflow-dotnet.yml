@@ -1,0 +1,26 @@
+name: Workflow Dotnet
+on:
+  push:
+    branches: ["main"]
+
+env:
+  DOTNET_VERSION: '8.0.x'
+
+jobs:
+  build-and-deploy:
+    runs-on: windows-latest # For Linux, use ubuntu-latest
+    environment: dev
+    steps:
+    - name: 'Checkout GitHub Action'
+      uses: actions/checkout@v3
+
+    - name: Setup DotNet ${{ env.DOTNET_VERSION }} Environment
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+
+    - name: 'Resolve Project Dependencies Using Dotnet'
+      run:
+        dotnet build --configuration Release --output ./output
+        popd
+
