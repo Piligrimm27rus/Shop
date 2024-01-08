@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Ninject;
 using System.Reflection;
+using Ninject.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,13 +14,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // //setup Ninject
-// var kernel = new StandardKernel();
-// // load modules
-// kernel.Load(Assembly.GetExecutingAssembly());
-// var registrations = NinjectRegistrations.LoadDependenses();
-// DependencyResolver.SetResolver(registrations);
-var kernel = new StandardKernel(); 
-kernel.Load(Assembly.GetExecutingAssembly());
+builder.Host.UseServiceProviderFactory(new NinjectServiceProviderFactory())
+    .ConfigureContainer<IKernel>(kernel =>
+    {
+        kernel.Load(AppDomain.CurrentDomain.GetAssemblies());
+    });
 // //Database
 // string connection = builder.Configuration.GetConnectionString("DataAccessPostgreSqlProvider");
 // builder.Services.AddDbContext<InfrastuctureContext>(options => options.UseNpgsql(connection));
