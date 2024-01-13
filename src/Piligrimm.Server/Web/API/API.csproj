@@ -8,8 +8,13 @@
     <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute> 
   </PropertyGroup>
 
+
+	<ItemGroup>
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+	</ItemGroup>
+
   <ItemGroup>
-    <ProjectReference Include="Service/Service.csproj" />
+    <ProjectReference Include="../Service/Service.csproj" />
   </ItemGroup>
 
 </Project>

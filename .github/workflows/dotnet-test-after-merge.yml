@@ -19,7 +19,10 @@ jobs:
 
 
     - name: Build Web
-      working-directory: src/Piligrimm.Server/Web
+      working-directory: src/Piligrimm.Server
       run: dotnet build
 
-      # Test
+      
+    - name: Test Web
+      working-directory: src/Piligrimm.Server
+      run: dotnet test
