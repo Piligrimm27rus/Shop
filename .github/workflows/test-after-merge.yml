@@ -1,4 +1,4 @@
-name: Build Project
+name: Build Project after merge
 
 on:
   pull_request_review:
@@ -10,8 +10,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - name: Build Web
-        working-directory: src/Piligrimm.Server/Web
-        run: dotnet build
+    - uses: actions/checkout@v4
+
+    - name: Setup dotnet
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.0.x'
+
+
+    - name: Build Web
+      working-directory: src/Piligrimm.Server/Web
+      run: dotnet build
 
       # Test
