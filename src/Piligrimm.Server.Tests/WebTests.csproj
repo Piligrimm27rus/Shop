@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -10,8 +10,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoFixture" Version="4.18.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.0" />
-    <PackageReference Include="Moq" Version="4.20.70" />
+    <PackageReference Include="NSubstitute" Version="5.1.0" />
     <PackageReference Include="NUnit" Version="3.13.3" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" />
     <PackageReference Include="NUnit.Analyzers" Version="3.6.1" />
@@ -19,7 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
-	  <ProjectReference Include="..\Web\Application\Application.csproj" />
+    <ProjectReference Include="../Piligrimm.Server/Web/Application/Application.csproj" />
+    <ProjectReference Include="../Piligrimm.Server/Web/Service/Service.csproj" />
   </ItemGroup>
 
 </Project>

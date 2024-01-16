@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service", "Web\Service\Serv
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "Web\API\API.csproj", "{788E0601-4A6D-4379-88E4-16CAC9118A70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestWeb", "Tests\TestWeb.csproj", "{65E61ECC-F3B2-4464-981D-C727402F5689}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTests", "..\Piligrimm.Server.Tests\WebTests.csproj", "{6A6933E5-2096-4B03-950D-5B75F927884F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +41,10 @@ Global
 		{788E0601-4A6D-4379-88E4-16CAC9118A70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{788E0601-4A6D-4379-88E4-16CAC9118A70}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{788E0601-4A6D-4379-88E4-16CAC9118A70}.Release|Any CPU.Build.0 = Release|Any CPU
-		{65E61ECC-F3B2-4464-981D-C727402F5689}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{65E61ECC-F3B2-4464-981D-C727402F5689}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{65E61ECC-F3B2-4464-981D-C727402F5689}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{65E61ECC-F3B2-4464-981D-C727402F5689}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A6933E5-2096-4B03-950D-5B75F927884F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A6933E5-2096-4B03-950D-5B75F927884F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A6933E5-2096-4B03-950D-5B75F927884F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A6933E5-2096-4B03-950D-5B75F927884F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

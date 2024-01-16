@@ -23,5 +23,5 @@ jobs:
 
 
     - name: Test Web
-      working-directory: src/Piligrimm.Server
+      working-directory: src/Piligrimm.Server.Tests
       run: dotnet test
