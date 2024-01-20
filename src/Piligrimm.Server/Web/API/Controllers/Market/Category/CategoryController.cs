@@ -1,24 +1,24 @@
 using Microsoft.AspNetCore.Mvc;
-using Service.Market;
-using Models.Market;
 
-namespace API.Controllers.Market
+using Piligrimm.Server.Application.Models.Market;
+
+namespace Piligrimm.Server.API.Controllers.Market
 {
     [Controller]
-    [Route("api/market/category")]
+    [Route("api/market/[controller]/[action]")]
     public class CategoryController : ControllerBase
     {
-        private readonly ICategoryService categoryService;
+        private readonly ICategoryApplication _categoryApplication;
 
-        public CategoryController(ICategoryService _categoryService)
+        public CategoryController(ICategoryApplication categoryApplication)
         {
-            categoryService = _categoryService;
+            _categoryApplication = categoryApplication;
         }
 
         [HttpGet(Name = "GetAll")]
         public IEnumerable<Category> GetAll()
         {
-            return categoryService.GetAll();
+            return _categoryApplication.GetAll();
         }
     }
 }
