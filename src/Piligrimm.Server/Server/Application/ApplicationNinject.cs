@@ -10,6 +10,7 @@ namespace Piligrimm.Server.Application
         public override void Load()
         {
             this.Kernel.Bind<ICategoryApplication>().To<CategoryApplication>().InSingletonScope();
+            this.Kernel.Bind<ICategoryResolver>().To<CategoryResolver>().InSingletonScope();
         }
     }
 }

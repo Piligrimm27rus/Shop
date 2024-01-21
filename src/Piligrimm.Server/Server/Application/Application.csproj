@@ -4,8 +4,6 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute> 
   </PropertyGroup>
 
 <ItemGroup>
@@ -13,8 +11,7 @@
 	</ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../Application/Application.csproj"/>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <ProjectReference Include="../Infrastructure/Infrastructure.csproj"/>
   </ItemGroup>
 
 </Project>

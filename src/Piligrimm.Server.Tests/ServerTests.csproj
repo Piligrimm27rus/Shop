@@ -19,8 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../Piligrimm.Server/Application/Application.csproj" />
-    <ProjectReference Include="../Piligrimm.Server/Infrastructure/Infrastructure.csproj" />
+    <ProjectReference Include="../Piligrimm.Server/Server/Application/Application.csproj" />
+    <ProjectReference Include="../Piligrimm.Server/Server/Infrastructure/Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

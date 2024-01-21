@@ -6,26 +6,27 @@ namespace Piligrimm.ServerTests.Application.Market
 {
     public class CategoryApplicationTests
     {
-        private CategoryApplication categoryApplication;
+        private readonly CategoryApplication categoryApplication;
+        private readonly ICategoryInfrastructure categoryInfrastructure;
+        private readonly ICategoryResolver categoryResolver;
         Fixture fixture = new();
 
-        [SetUp]
-        public void Setup()
+        public CategoryApplicationTests()
         {
-            var categoryInfrastructure = Substitute.For<ICategoryInfrastructure>();
+            categoryInfrastructure = Substitute.For<ICategoryInfrastructure>();
+            categoryResolver = new CategoryResolver();
 
-            IEnumerable<CategoryDto> categories = fixture.Build<CategoryDto>()
-                .WithAutoProperties()
-                .CreateMany(3);
-
-            categoryInfrastructure.GetAll().Returns(categories);
-
-            categoryApplication = new(categoryInfrastructure);
+            categoryApplication = new(categoryInfrastructure, categoryResolver);
         }
 
         [Test]
         public void Test_GetAllNotEmpty()
         {
+            IEnumerable<CategoryDto> categoriesDto = fixture.Build<CategoryDto>()
+                .WithAutoProperties()
+                .CreateMany(3);
+            categoryInfrastructure.GetAll().Returns(categoriesDto);
+
             var categories = categoryApplication.GetAll();
 
             Assert.IsNotNull(categories);

@@ -1,5 +1,8 @@
 using Ninject.Extensions.DependencyInjection;
 using Ninject;
+using System.Reflection;
+using System;
+using Ninject.Modules;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,11 +12,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// //setup Ninject
+//setup Ninject
 builder.Host.UseServiceProviderFactory(new NinjectServiceProviderFactory())
     .ConfigureContainer<IKernel>(kernel =>
     {
-        kernel.Load(AppDomain.CurrentDomain.GetAssemblies());
+        kernel.Load
+        (
+            Assembly.Load("Application"),
+            Assembly.Load("Infrastructure")
+        );
     });
 
 var app = builder.Build();

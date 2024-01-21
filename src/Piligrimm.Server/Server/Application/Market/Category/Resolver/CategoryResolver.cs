@@ -3,9 +3,9 @@ using Piligrimm.Server.Application.Models.Market;
 
 namespace Piligrimm.Server.Application.Market
 {
-    public static class CategoryResolver
+    public class CategoryResolver : ICategoryResolver
     {
-        public static IEnumerable<Category> Cast(IEnumerable<CategoryDto> categories)
+        public IEnumerable<Category> Cast(IEnumerable<CategoryDto> categories)
         {
             return categories.Select(categoryDto =>
                 new Category()
