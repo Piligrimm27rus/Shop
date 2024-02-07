@@ -16,7 +16,7 @@ namespace Piligrimm.ServerTests.Application.Market
             productInfrastructure = Substitute.For<IProductInfrastructure>();
             productResolver = new ProductResolver();
 
-            ProductApplication = new(productInfrastructure, productResolver);
+            productApplication = new(productInfrastructure, productResolver);
         }
 
         [Test]
@@ -25,9 +25,9 @@ namespace Piligrimm.ServerTests.Application.Market
             IEnumerable<ProductEntity> productsEntity = fixture.Build<ProductEntity>()
                 .WithAutoProperties()
                 .CreateMany(3);
-            ProductInfrastructure.GetAll().Returns(productsEntity);
+            productInfrastructure.GetAll().Returns(productsEntity);
 
-            var products = ProductApplication.GetAll();
+            var products = productApplication.GetAll();
 
             Assert.IsNotNull(products);
             Assert.IsTrue(products.Count() != 0);
