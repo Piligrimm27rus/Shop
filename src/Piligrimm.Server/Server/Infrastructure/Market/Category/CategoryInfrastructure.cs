@@ -1,23 +1,20 @@
 using Piligrimm.Server.Infrastructure.Models.Market;
+using Ninject.Infrastructure.Language;
 
 namespace Piligrimm.Server.Infrastructure.Market
 {
     public class CategoryInfrastructure : ICategoryInfrastructure
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
+        private readonly IInfrastructureContext _infrastructure;
 
-        public IEnumerable<CategoryDto> GetAll()
+        public CategoryInfrastructure(IInfrastructureContext infrastructure)
         {
-            return Enumerable.Range(1, 5).Select(index => new CategoryDto
-            {
-                Uid = Guid.NewGuid(),
-                Name = Summaries[Random.Shared.Next(Summaries.Length)],
-                Price = Random.Shared.Next(0, 100),
-                Description = string.Empty
-            }).ToArray();
+            _infrastructure = infrastructure;
+        }
+
+        public IEnumerable<CategoryEntity> GetAll()
+        {
+            return _infrastructure.Category.ToEnumerable();
         }
     }
 }

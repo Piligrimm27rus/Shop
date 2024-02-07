@@ -1,7 +1,10 @@
-namespace Piligrimm.Server.Application.Models.Market
+using System.ComponentModel.DataAnnotations;
+
+namespace Piligrimm.Server.Infrastructure.Models.Market
 {
-    public class Category
+    public class CategoryEntity
     {
+        [Key]
         public Guid Uid { get; set; }
         public Guid? ParentId { get; set; }
         public string Name { get; set; } = null!;

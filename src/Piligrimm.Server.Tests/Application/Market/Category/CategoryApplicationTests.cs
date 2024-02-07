@@ -22,10 +22,10 @@ namespace Piligrimm.ServerTests.Application.Market
         [Test]
         public void Test_GetAllNotEmpty()
         {
-            IEnumerable<CategoryDto> categoriesDto = fixture.Build<CategoryDto>()
+            IEnumerable<CategoryEntity> categoriesEntity = fixture.Build<CategoryEntity>()
                 .WithAutoProperties()
                 .CreateMany(3);
-            categoryInfrastructure.GetAll().Returns(categoriesDto);
+            categoryInfrastructure.GetAll().Returns(categoriesEntity);
 
             var categories = categoryApplication.GetAll();
 

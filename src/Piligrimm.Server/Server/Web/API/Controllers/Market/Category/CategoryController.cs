@@ -15,7 +15,7 @@ namespace Piligrimm.Server.API.Controllers.Market
             _categoryApplication = categoryApplication;
         }
 
-        [HttpGet(Name = "GetAll")]
+        [HttpGet]
         public IEnumerable<Category> GetAll()
         {
             return _categoryApplication.GetAll();

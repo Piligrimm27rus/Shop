@@ -5,15 +5,15 @@ namespace Piligrimm.Server.Application.Market
 {
     public class CategoryResolver : ICategoryResolver
     {
-        public IEnumerable<Category> Cast(IEnumerable<CategoryDto> categories)
+        public IEnumerable<Category> Cast(IEnumerable<CategoryEntity> categories)
         {
-            return categories.Select(categoryDto =>
+            return categories.Select(entity =>
                 new Category()
                 {
-                    Uid = categoryDto.Uid,
-                    Name = categoryDto.Name,
-                    Price = categoryDto.Price,
-                    Description = categoryDto.Description
+                    Uid = entity.Uid,
+                    ParentId = entity.ParentId,
+                    Name = entity.Name,
+                    Description = entity.Description
                 }
             );
         }

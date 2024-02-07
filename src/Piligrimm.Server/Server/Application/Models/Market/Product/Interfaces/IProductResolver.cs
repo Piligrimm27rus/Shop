@@ -2,8 +2,8 @@ using Piligrimm.Server.Infrastructure.Models.Market;
 
 namespace Piligrimm.Server.Application.Models.Market
 {
-    public interface ICategoryResolver
+    public interface IProductResolver
     {
-        IEnumerable<Category> Cast(IEnumerable<CategoryEntity> categories);
+        IEnumerable<Product> Cast(IEnumerable<ProductEntity> categories);
     }
 }
