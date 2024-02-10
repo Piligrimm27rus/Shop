@@ -1,26 +1,19 @@
-using Piligrimm.Server.Infrastructure.Models.Market;
 using Piligrimm.Server.Application.Models.Market;
 
 namespace Piligrimm.Server.Application.Market
 {
     public class ProductApplication : IProductApplication
     {
-        private readonly IProductInfrastructure _productInfrastructure;
-        private readonly IProductResolver _productResolver;
+        private readonly IProductRepository _productRepository;
 
-        public ProductApplication(
-            IProductInfrastructure productInfrastructure,
-            IProductResolver productResolver)
+        public ProductApplication(IProductRepository productRepository)
         {
-            _productInfrastructure = productInfrastructure;
-            _productResolver = productResolver;
+            _productRepository = productRepository;
         }
 
         public IEnumerable<Product> GetAll()
         {
-            var categories = _productInfrastructure.GetAll();
-            
-            return _productResolver.Cast(categories);
+            return _productRepository.GetAll();
         }
     }
 }

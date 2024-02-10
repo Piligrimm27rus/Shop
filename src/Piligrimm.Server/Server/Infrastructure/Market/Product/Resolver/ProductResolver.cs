@@ -1,9 +1,9 @@
 using Piligrimm.Server.Infrastructure.Models.Market;
 using Piligrimm.Server.Application.Models.Market;
 
-namespace Piligrimm.Server.Application.Market
+namespace Piligrimm.Server.Infrastructure.Market
 {
-    public class ProductResolver : IProductResolver
+    internal class ProductResolver : IProductResolver
     {
         public IEnumerable<Product> Cast(IEnumerable<ProductEntity> products)
         {

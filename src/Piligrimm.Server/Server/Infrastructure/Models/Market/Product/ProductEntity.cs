@@ -1,8 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Piligrimm.Server.Infrastructure.Models.Market
 {
-    public class ProductEntity
+    // [Table("product")]
+    internal class ProductEntity
     {
         [Key]
         public Guid Uid { get; set; }

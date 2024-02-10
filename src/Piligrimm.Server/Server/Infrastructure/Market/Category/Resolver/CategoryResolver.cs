@@ -1,9 +1,9 @@
 using Piligrimm.Server.Infrastructure.Models.Market;
 using Piligrimm.Server.Application.Models.Market;
 
-namespace Piligrimm.Server.Application.Market
+namespace Piligrimm.Server.Infrastructure.Market
 {
-    public class CategoryResolver : ICategoryResolver
+    internal class CategoryResolver : ICategoryResolver
     {
         public IEnumerable<Category> Cast(IEnumerable<CategoryEntity> categories)
         {

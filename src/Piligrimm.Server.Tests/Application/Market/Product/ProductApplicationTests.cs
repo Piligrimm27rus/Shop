@@ -7,25 +7,22 @@ namespace Piligrimm.ServerTests.Application.Market
     public class ProductApplicationTests
     {
         private readonly ProductApplication productApplication;
-        private readonly IProductInfrastructure productInfrastructure;
-        private readonly IProductResolver productResolver;
+        private readonly IProductRepository productRepository;
         Fixture fixture = new();
 
         public ProductApplicationTests()
         {
-            productInfrastructure = Substitute.For<IProductInfrastructure>();
-            productResolver = new ProductResolver();
-
-            productApplication = new(productInfrastructure, productResolver);
+            productRepository = Substitute.For<IProductRepository>();
+            productApplication = new(productRepository);
         }
 
         [Test]
         public void Test_GetAllNotEmpty()
         {
-            IEnumerable<ProductEntity> productsEntity = fixture.Build<ProductEntity>()
+            IEnumerable<Product> productsEntity = fixture.Build<Product>()
                 .WithAutoProperties()
                 .CreateMany(3);
-            productInfrastructure.GetAll().Returns(productsEntity);
+            productRepository.GetAll().Returns(productsEntity);
 
             var products = productApplication.GetAll();
 
