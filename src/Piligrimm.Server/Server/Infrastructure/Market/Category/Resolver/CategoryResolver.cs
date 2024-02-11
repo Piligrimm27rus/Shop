@@ -7,15 +7,18 @@ namespace Piligrimm.Server.Infrastructure.Market
     {
         public IEnumerable<Category> Cast(IEnumerable<CategoryEntity> categories)
         {
-            return categories.Select(entity =>
-                new Category()
-                {
-                    Uid = entity.Uid,
-                    ParentId = entity.ParentId,
-                    Name = entity.Name,
-                    Description = entity.Description
-                }
-            );
+            return categories.Select(Cast);
+        }
+
+        public Category Cast(CategoryEntity category)
+        {
+            return new Category()
+            {
+                Uid = category.Uid,
+                ParentId = category.ParentId,
+                Name = category.Name,
+                Description = category.Description
+            };
         }
     }
 }

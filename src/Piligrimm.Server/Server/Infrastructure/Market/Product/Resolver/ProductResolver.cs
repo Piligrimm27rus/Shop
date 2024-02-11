@@ -5,13 +5,19 @@ namespace Piligrimm.Server.Infrastructure.Market
 {
     internal class ProductResolver : IProductResolver
     {
+        private readonly ICategoryResolver _categoryResolver;
+        internal ProductResolver(ICategoryResolver categoryResolver)
+        {
+            _categoryResolver = categoryResolver;
+        }
+
         public IEnumerable<Product> Cast(IEnumerable<ProductEntity> products)
         {
             return products.Select(entity =>
                 new Product()
                 {
                     Uid = entity.Uid,
-                    CategoryUid = entity.CategoryUid,
+                    Category = _categoryResolver.Cast(entity.Category),
                     Name = entity.Name,
                     Price = entity.Price,
                     Discount = entity.Discount,

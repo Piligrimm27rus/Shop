@@ -1,4 +1,3 @@
-using Piligrimm.Server.Infrastructure.Models.Market;
 using Piligrimm.Server.Application.Models.Market;
 using Ninject.Infrastructure.Language;
 
