@@ -7,18 +7,21 @@ namespace Piligrimm.Server.Infrastructure.Market
     internal class ProductRepository : IProductRepository
     {
         private readonly InfrastructureContext _infrastructure;
-        private readonly IProductResolver _resolver;
 
-        public ProductRepository(InfrastructureContext infrastructure, IProductResolver resolver)
+        public ProductRepository(InfrastructureContext infrastructure)
         {
             _infrastructure = infrastructure;
-            _resolver = resolver;
         }
 
-        public IEnumerable<Product> GetAll()
+        public Task<IEnumerable<Product>> GetAll(CancellationToken cancellation)
         {
+            if (cancellation.IsCancellationRequested)
+            {
+                return Task.FromResult(Enumerable.Empty<Product>());
+            }
+
             var products = _infrastructure.Product.ToEnumerable();
-            return _resolver.Cast(products);
+            return Task.FromResult(products.Cast());
         }
     }
 }

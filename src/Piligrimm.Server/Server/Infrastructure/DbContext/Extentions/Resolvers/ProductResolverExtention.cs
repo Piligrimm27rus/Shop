@@ -3,21 +3,15 @@ using Piligrimm.Server.Application.Models.Market;
 
 namespace Piligrimm.Server.Infrastructure.Market
 {
-    internal class ProductResolver : IProductResolver
+    internal static class ProductResolverExtention
     {
-        private readonly ICategoryResolver _categoryResolver;
-        internal ProductResolver(ICategoryResolver categoryResolver)
-        {
-            _categoryResolver = categoryResolver;
-        }
-
-        public IEnumerable<Product> Cast(IEnumerable<ProductEntity> products)
+        public static IEnumerable<Product> Cast(this IEnumerable<ProductEntity> products)
         {
             return products.Select(entity =>
                 new Product()
                 {
                     Uid = entity.Uid,
-                    Category = _categoryResolver.Cast(entity.Category),
+                    Category = entity.Category.Cast(),
                     Name = entity.Name,
                     Price = entity.Price,
                     Discount = entity.Discount,

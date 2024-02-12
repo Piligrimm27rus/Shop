@@ -11,9 +11,14 @@ namespace Piligrimm.Server.Application.Market
             _categoryRepository = categoryRepository;
         }
 
-        public IEnumerable<Category> GetAll()
+        public Task<IEnumerable<Category>> GetAll(CancellationToken cancellationToken)
         {
-            return _categoryRepository.GetAll();            
+            if (cancellationToken.IsCancellationRequested)
+            {
+                return Task.FromResult(Enumerable.Empty<Category>());
+            }
+
+            return _categoryRepository.GetAll(cancellationToken);
         }
     }
 }

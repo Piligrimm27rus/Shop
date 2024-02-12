@@ -3,14 +3,14 @@ using Piligrimm.Server.Application.Models.Market;
 
 namespace Piligrimm.Server.Infrastructure.Market
 {
-    internal class CategoryResolver : ICategoryResolver
+    internal static class CategoryResolverExtention
     {
-        public IEnumerable<Category> Cast(IEnumerable<CategoryEntity> categories)
+        public static IEnumerable<Category> Cast(this IEnumerable<CategoryEntity> categories)
         {
             return categories.Select(Cast);
         }
 
-        public Category Cast(CategoryEntity category)
+        public static Category Cast(this CategoryEntity category)
         {
             return new Category()
             {

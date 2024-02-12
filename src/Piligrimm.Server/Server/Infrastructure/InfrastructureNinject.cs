@@ -1,7 +1,7 @@
 using Ninject.Modules;
+using Ninject.Web.Common;
 using Piligrimm.Server.Application.Models.Market;
 using Piligrimm.Server.Infrastructure.Market;
-using Piligrimm.Server.Infrastructure.Models.Market;
 
 namespace Piligrimm.Server.Infrastructure
 {
@@ -9,11 +9,8 @@ namespace Piligrimm.Server.Infrastructure
     {
         public override void Load()
         {
-            Kernel.Bind<ICategoryRepository>().To<CategoryRepository>().InThreadScope();
-            Kernel.Bind<IProductRepository>().To<ProductRepository>().InThreadScope();
-
-            Kernel.Bind<IProductResolver>().To<ProductResolver>().InSingletonScope();
-            Kernel.Bind<ICategoryResolver>().To<CategoryResolver>().InSingletonScope();
+            Kernel.Bind<ICategoryRepository>().To<CategoryRepository>().InRequestScope();
+            Kernel.Bind<IProductRepository>().To<ProductRepository>().InRequestScope();
         }
     }
 }

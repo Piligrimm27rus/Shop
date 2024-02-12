@@ -8,9 +8,7 @@ namespace Piligrimm.Server.Infrastructure
         internal DbSet<CategoryEntity> Category { get; set; }
         internal DbSet<ProductEntity> Product { get; set; }
 
-        public InfrastructureContext(DbContextOptions<InfrastructureContext> dbContextOptions) : base(dbContextOptions)
-        {
-            Database.EnsureCreated();
-        }
+        public InfrastructureContext(DbContextOptions<InfrastructureContext> dbContextOptions) 
+            : base(dbContextOptions) { }
     }
 }

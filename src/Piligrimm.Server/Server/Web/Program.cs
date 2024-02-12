@@ -10,11 +10,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<InfrastructureContext>(options => 
-    {
-        options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
-        options.UseSnakeCaseNamingConvention();
-    });
+builder.Services.AddInfrastructure(builder.Configuration);
 
 //setup Ninject
 builder.Host.UseServiceProviderFactory(new NinjectServiceProviderFactory())

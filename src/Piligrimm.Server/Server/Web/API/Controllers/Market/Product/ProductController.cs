@@ -16,9 +16,9 @@ namespace Piligrimm.Server.API.Controllers.Market
         }
 
         [HttpGet]
-        public IEnumerable<Product> GetAll()
+        public Task<IEnumerable<Product>> GetAll(CancellationToken cancellationToken)
         {
-            return _productApplication.GetAll();
+            return _productApplication.GetAll(cancellationToken);
         }
     }
 }

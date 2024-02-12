@@ -6,18 +6,21 @@ namespace Piligrimm.Server.Infrastructure.Market
     internal class CategoryRepository : ICategoryRepository
     {
         private readonly InfrastructureContext _infrastructure;
-        private readonly ICategoryResolver _resolver;
 
-        public CategoryRepository(InfrastructureContext infrastructure, ICategoryResolver resolver)
+        public CategoryRepository(InfrastructureContext infrastructure)
         {
             _infrastructure = infrastructure;
-            _resolver = resolver;
         }
 
-        public IEnumerable<Category> GetAll()
+        public Task<IEnumerable<Category>> GetAll(CancellationToken cancellationToken)
         {
+            if (cancellationToken.IsCancellationRequested)
+            {
+                return Task.FromResult(Enumerable.Empty<Category>());
+            }
+
             var categories = _infrastructure.Category.ToEnumerable();
-            return _resolver.Cast(categories);
+            return Task.FromResult(categories.Cast());
         }
     }
 }
