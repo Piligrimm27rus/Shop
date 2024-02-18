@@ -20,29 +20,18 @@ namespace Piligrimm.ServerTests.Application.Market
         }
 
         [Test]
-        public void Test_GetAllNotEmpty()
+        public async Task GetAll_ProductRepositoryHasRows_NotNullAndGetAllIsSame()
         {
             IEnumerable<Product> productsEntity = fixture.Build<Product>()
                 .WithAutoProperties()
                 .CreateMany(3);
             productRepository.GetAll(cancellationToken).Returns(productsEntity);
 
-            var products = productApplication.GetAll(cancellationToken).Result;
+            var products = await productApplication.GetAll(cancellationToken);
 
             Assert.IsNotNull(products);
             Assert.IsTrue(products.Count() != 0);
             Assert.IsTrue(products.First() is Product);
-        }
-
-        [Test]
-        public void Test_GetAllIsSame()
-        {
-            IEnumerable<Product> productsEntity = fixture.Build<Product>()
-                .WithAutoProperties()
-                .CreateMany(3);
-            productRepository.GetAll(cancellationToken).Returns(productsEntity);
-
-            var products = productApplication.GetAll(cancellationToken).Result;
 
             products.Should().Equal(productsEntity, (p1, p2) =>
                 p1.Uid == p2.Uid &&

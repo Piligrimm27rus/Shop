@@ -20,30 +20,19 @@ namespace Piligrimm.ServerTests.Application.Market
         }
 
         [Test]
-        public void Test_GetAllNotEmpty()
+        public async Task GetAll_CategoryRepositoryHasRows_NotNullAndGetAllIsSame()
         {
             IEnumerable<Category> categoriesEntity = fixture.Build<Category>()
                 .WithAutoProperties()
                 .CreateMany(3);
             categoryRepository.GetAll(cancellationToken).Returns(categoriesEntity);
 
-            var categories = categoryApplication.GetAll(cancellationToken).Result;
+            var categories = await categoryApplication.GetAll(cancellationToken);
 
             Assert.IsNotNull(categories);
             Assert.IsTrue(categories.Count() != 0);
             Assert.IsTrue(categories.First() is Category);
-        }
-
-        [Test]
-        public void Test_GetAllIsSame()
-        {
-            IEnumerable<Category> categoriesEntity = fixture.Build<Category>()
-                .WithAutoProperties()
-                .CreateMany(3);
-            categoryRepository.GetAll(cancellationToken).Returns(categoriesEntity);
-
-            var categories = categoryApplication.GetAll(cancellationToken).Result;
-
+            // categories.Should().BeEquivalentTo(categoriesEntity);
             categories.Should().Equal(categoriesEntity, (c1, c2) =>
                 c1.Uid == c2.Uid &&
                 c1.ParentId == c2.ParentId &&

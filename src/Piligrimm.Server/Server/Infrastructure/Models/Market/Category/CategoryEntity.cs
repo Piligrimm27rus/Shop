@@ -1,7 +1,9 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Piligrimm.Server.Infrastructure.Models.Market
 {
+    [Table("Categories")]
     internal class CategoryEntity
     {
         [Key]

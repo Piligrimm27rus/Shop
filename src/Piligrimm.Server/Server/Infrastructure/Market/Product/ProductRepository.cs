@@ -13,11 +13,11 @@ namespace Piligrimm.Server.Infrastructure.Market
             _infrastructure = infrastructure;
         }
 
-        public Task<IEnumerable<Product>> GetAll(CancellationToken cancellation)
+        public Task<IEnumerable<Product>> GetAll(CancellationToken cancellationToken)
         {
-            if (cancellation.IsCancellationRequested)
+            if (cancellationToken.IsCancellationRequested)
             {
-                return Task.FromResult(Enumerable.Empty<Product>());
+                cancellationToken.ThrowIfCancellationRequested();
             }
 
             var products = _infrastructure.Product.ToEnumerable();

@@ -12,7 +12,7 @@ namespace Infrastructure.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "category",
+                name: "Categories",
                 columns: table => new
                 {
                     uid = table.Column<Guid>(type: "uuid", nullable: false),
@@ -22,11 +22,11 @@ namespace Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("pk_category", x => x.uid);
+                    table.PrimaryKey("pk_categories", x => x.uid);
                 });
 
             migrationBuilder.CreateTable(
-                name: "product",
+                name: "Products",
                 columns: table => new
                 {
                     uid = table.Column<Guid>(type: "uuid", nullable: false),
@@ -38,18 +38,18 @@ namespace Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("pk_product", x => x.uid);
+                    table.PrimaryKey("pk_products", x => x.uid);
                     table.ForeignKey(
-                        name: "fk_product_category_category_uid",
+                        name: "fk_products_categories_category_uid",
                         column: x => x.category_uid,
-                        principalTable: "category",
+                        principalTable: "Categories",
                         principalColumn: "uid",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "ix_product_category_uid",
-                table: "product",
+                name: "ix_products_category_uid",
+                table: "Products",
                 column: "category_uid");
         }
 
@@ -57,10 +57,10 @@ namespace Infrastructure.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "product");
+                name: "Products");
 
             migrationBuilder.DropTable(
-                name: "category");
+                name: "Categories");
         }
     }
 }

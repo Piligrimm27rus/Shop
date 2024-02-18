@@ -16,7 +16,7 @@ namespace Piligrimm.Server.Infrastructure.Market
         {
             if (cancellationToken.IsCancellationRequested)
             {
-                return Task.FromResult(Enumerable.Empty<Category>());
+                cancellationToken.ThrowIfCancellationRequested();
             }
 
             var categories = _infrastructure.Category.ToEnumerable();

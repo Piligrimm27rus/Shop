@@ -15,7 +15,7 @@ namespace Piligrimm.Server.Application.Market
         {
             if (cancellationToken.IsCancellationRequested)
             {
-                return Task.FromResult(Enumerable.Empty<Category>());
+                cancellationToken.ThrowIfCancellationRequested();
             }
 
             return _categoryRepository.GetAll(cancellationToken);

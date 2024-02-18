@@ -12,7 +12,7 @@ using Piligrimm.Server.Infrastructure;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(InfrastructureContext))]
-    [Migration("20240213170633_InitialCreate")]
+    [Migration("20240218163528_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -46,9 +46,9 @@ namespace Infrastructure.Migrations
                         .HasColumnName("parent_id");
 
                     b.HasKey("Uid")
-                        .HasName("pk_category");
+                        .HasName("pk_categories");
 
-                    b.ToTable("category", (string)null);
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("Piligrimm.Server.Infrastructure.Models.Market.ProductEntity", b =>
@@ -80,12 +80,12 @@ namespace Infrastructure.Migrations
                         .HasColumnName("price");
 
                     b.HasKey("Uid")
-                        .HasName("pk_product");
+                        .HasName("pk_products");
 
                     b.HasIndex("CategoryUid")
-                        .HasDatabaseName("ix_product_category_uid");
+                        .HasDatabaseName("ix_products_category_uid");
 
-                    b.ToTable("product", (string)null);
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("Piligrimm.Server.Infrastructure.Models.Market.ProductEntity", b =>
@@ -95,7 +95,7 @@ namespace Infrastructure.Migrations
                         .HasForeignKey("CategoryUid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_product_category_category_uid");
+                        .HasConstraintName("fk_products_categories_category_uid");
 
                     b.Navigation("Category");
                 });
