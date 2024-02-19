@@ -19,8 +19,7 @@ namespace Piligrimm.Server.Infrastructure.Market
                 cancellationToken.ThrowIfCancellationRequested();
             }
 
-            var categories = _infrastructure.Category.ToEnumerable();
-            return Task.FromResult(categories.Cast());
+            return Task.FromResult(_infrastructure.Category.ToEnumerable());
         }
     }
 }

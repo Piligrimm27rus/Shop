@@ -12,7 +12,7 @@ using Piligrimm.Server.Infrastructure;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(InfrastructureContext))]
-    [Migration("20240218163528_InitialCreate")]
+    [Migration("20240219152809_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -25,7 +25,7 @@ namespace Infrastructure.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Piligrimm.Server.Infrastructure.Models.Market.CategoryEntity", b =>
+            modelBuilder.Entity("Piligrimm.Server.Application.Models.Market.Category", b =>
                 {
                     b.Property<Guid>("Uid")
                         .ValueGeneratedOnAdd()
@@ -48,10 +48,10 @@ namespace Infrastructure.Migrations
                     b.HasKey("Uid")
                         .HasName("pk_categories");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
                 });
 
-            modelBuilder.Entity("Piligrimm.Server.Infrastructure.Models.Market.ProductEntity", b =>
+            modelBuilder.Entity("Piligrimm.Server.Application.Models.Market.Product", b =>
                 {
                     b.Property<Guid>("Uid")
                         .ValueGeneratedOnAdd()
@@ -85,12 +85,12 @@ namespace Infrastructure.Migrations
                     b.HasIndex("CategoryUid")
                         .HasDatabaseName("ix_products_category_uid");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
                 });
 
-            modelBuilder.Entity("Piligrimm.Server.Infrastructure.Models.Market.ProductEntity", b =>
+            modelBuilder.Entity("Piligrimm.Server.Application.Models.Market.Product", b =>
                 {
-                    b.HasOne("Piligrimm.Server.Infrastructure.Models.Market.CategoryEntity", "Category")
+                    b.HasOne("Piligrimm.Server.Application.Models.Market.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryUid")
                         .OnDelete(DeleteBehavior.Cascade)

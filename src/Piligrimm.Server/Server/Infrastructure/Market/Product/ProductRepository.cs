@@ -1,5 +1,4 @@
-﻿using Piligrimm.Server.Infrastructure.Models.Market;
-using Piligrimm.Server.Application.Models.Market;
+﻿using Piligrimm.Server.Application.Models.Market;
 using Ninject.Infrastructure.Language;
 
 namespace Piligrimm.Server.Infrastructure.Market
@@ -20,8 +19,7 @@ namespace Piligrimm.Server.Infrastructure.Market
                 cancellationToken.ThrowIfCancellationRequested();
             }
 
-            var products = _infrastructure.Product.ToEnumerable();
-            return Task.FromResult(products.Cast());
+            return Task.FromResult(_infrastructure.Product.ToEnumerable());
         }
     }
 }
