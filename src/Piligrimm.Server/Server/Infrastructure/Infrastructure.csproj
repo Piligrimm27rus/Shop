@@ -8,6 +8,14 @@
 
 	<ItemGroup>
 		<PackageReference Include="Ninject" Version="3.3.6" />
+		<PackageReference Include="Ninject.Web.Common" Version="3.3.2" />
+		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="EFCore.NamingConventions" Version="8.0.3" />
 	</ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../Application/Application.csproj" />
+  </ItemGroup>
 
 </Project>

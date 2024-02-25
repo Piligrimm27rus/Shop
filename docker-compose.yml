@@ -1,0 +1,24 @@
+version: '3.9'
+
+services:
+
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_DB: "PiligrimmDb"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "password"
+    volumes:
+      - "./.containers/shop-db:/var/lib/postgresql/data"
+    ports:
+      - "5432:5432"
+
+  server:
+    build: src/Piligrimm.Server/
+    restart: always
+    image: "web"
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development

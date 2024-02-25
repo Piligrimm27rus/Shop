@@ -1,6 +1,6 @@
 namespace Piligrimm.Server.Application.Models.Market
 {
-    public interface ICategoryApplication
+    public interface ICategoryRepository
     {
         Task<IEnumerable<Category>> GetAll(CancellationToken cancellationToken);
     }

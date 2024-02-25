@@ -15,10 +15,10 @@ namespace Piligrimm.Server.API.Controllers.Market
             _categoryApplication = categoryApplication;
         }
 
-        [HttpGet(Name = "GetAll")]
-        public IEnumerable<Category> GetAll()
+        [HttpGet]
+        public Task<IEnumerable<Category>> GetAll(CancellationToken cancellationToken)
         {
-            return _categoryApplication.GetAll();
+            return _categoryApplication.GetAll(cancellationToken);
         }
     }
 }
