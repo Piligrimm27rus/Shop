@@ -1,23 +1,23 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Piligrimm.Client.Razor.Models.Market;
-using Piligrimm.Client.Razor.Provider.Market;
+using Piligrimm.Client.Razor.Service.Market;
 
 namespace Piligrimm.Client.Razor.Pages
 {
-    internal class IndexModel : PageModel
+    public class IndexModel : PageModel
     {
-        private readonly ICategoryProvider _categoryProvider;
+        private readonly ICategoryService _categoryService;
 
         public IEnumerable<Category> Categories;
 
-        public IndexModel(ICategoryProvider categoryProvider)
+        public IndexModel(ICategoryService categoryService)
         {
-            _categoryProvider = categoryProvider;
+            _categoryService = categoryService;
         }
 
         public async void OnGet()
         {
-            Categories = await _categoryProvider.GetAll();
+            Categories = await _categoryService.GetAll();
         }
     }
 }

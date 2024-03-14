@@ -1,11 +1,17 @@
-using Piligrimm.Client.Razor.Provider.Market;
+using Piligrimm.Client.Razor.Application.Market;
+using Piligrimm.Client.Razor.Service.Market;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var mvcBuilder = builder.Services.AddRazorPages();
+ builder.Services.AddRazorPages()
+    .AddRazorRuntimeCompilation();
 
-builder.Services.AddSingleton<ICategoryProvider, CategoryProvider>();
+builder.Services.AddSingleton<ICategoryService, CategoryService>();
+
+builder.Services.AddHttpClient<MarketClient>(c => {
+    c.BaseAddress = new Uri("https://server/api/");
+});
 
 var app = builder.Build();
 
@@ -15,7 +21,6 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
-    mvcBuilder.AddRazorRuntimeCompilation();;
 }
 
 app.UseHttpsRedirection();

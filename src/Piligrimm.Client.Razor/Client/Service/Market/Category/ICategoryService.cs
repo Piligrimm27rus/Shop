@@ -1,8 +1,8 @@
 using Piligrimm.Client.Razor.Models.Market;
 
-namespace Piligrimm.Client.Razor.Provider.Market
+namespace Piligrimm.Client.Razor.Service.Market
 {
-    internal interface ICategoryProvider
+    public interface ICategoryService
     {
         Task<IEnumerable<Category>> GetAll();
     }

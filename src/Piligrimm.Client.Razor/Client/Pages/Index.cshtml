@@ -4,16 +4,53 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<style>
 
-    @foreach (var category in Model.Categories)
-    {
-        <div>
-            <image> photo </image>
-            <span> @category.Name </span>
-            <span> @category.Description </span>
-        </div>
+    .category-container {
+        position: relative;
+        text-align: center;
     }
+
+    .bottom-left {
+        position: absolute;
+        bottom: 29px;
+        left: 46px;
+    }
+
+    .category-name {
+        font-family: "Quicksand", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 500;
+        font-style: normal;
+    }
+
+    .category-image {
+        max-width: 377px;
+        height: 250px;
+    }
+</style>
+
+<div class="text-center">
+
+    <h1 class="display-4">Welcome</h1>
+
+    <section>
+        <div class="container py-5">
+            <div class="row">
+                @foreach (var category in Model.Categories)
+                {
+                    var photoPath = string.Concat(@category.Uid, ".jpg");
+
+                    <div class="col-12 col-sm-6 col-lg-4 category-container">
+                        <div class="m-3">
+                            <a href="category/@category.Uid">
+                                <img src="images/@photoPath" class="w-100 rounded-4 category-image" />
+                                <h5><span class="bottom-left text-white category-name">@category.Name</span></h5>
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
 </div>
